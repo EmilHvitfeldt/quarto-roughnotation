@@ -1,0 +1,39 @@
+---
+title: "Untitled"
+format: revealjs
+---
+
+## Quarto
+
+{{< rn_setup >}}
+
+[weave together]{.rn rn-color="red" rn-type="box" rn-index=1 rn-animationDuration=2000}
+
+[weave together]{.rn rn-color="red" rn-type="box" rn-strokeWidth=4 rn-animate=false}
+
+[weave together]{.rn rn-color="red" rn-type="box" rn-index=2}
+
+[weave together]{.rn rn-color="yellow" rn-type="box" rn-index=3}
+
+[weave together]{.rn rn-color="green" rn-type="box" rn-index=4}
+
+
+Quarto enables you to [weave together]{.rn rn-color="red" rn-type="box" rn-index=1} content and executable code into a finished presentation. To learn more about Quarto presentations see [<https://quarto.org/docs/presentations/>]{.rn rn-color=blue rn-type="underline" rn-index=1}.
+
+## Bullets
+
+https://www.toptal.com/developers/keycode/for/meta
+
+[When you click the **Render** button a document will be generated that includes:]{.rn rn-color="green" rn-type="highlight"}
+
+-   Content authored with markdown
+-   Output from executable code
+
+## Code
+
+[When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:]{.rn type="highlight" rn-multiline=true rn-iterations=1}
+
+```{r}
+1 + 1
+```
+
