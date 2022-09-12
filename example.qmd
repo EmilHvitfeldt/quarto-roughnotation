@@ -1,39 +1,140 @@
 ---
-title: "Untitled"
+title: "RoughNotation"
+subtitle: "Quarto revealjs presentations"
 format: revealjs
 filters:
   - roughnotation
 ---
 
-## Quarto
+## Setup
 
-[weave together]{.rn rn-color="red" rn-type="box" rn-index=1 rn-animationDuration=2000}
+Add the extension by running the following code in the terminal
 
-[weave together]{.rn rn-color="red" rn-type="box" rn-strokeWidth=4 rn-animate=false}
-
-[weave together]{.rn rn-color="red" rn-type="box" rn-index=2}
-
-[weave together]{.rn rn-color="yellow" rn-type="box" rn-index=3}
-
-[weave together]{.rn rn-color="green" rn-type="box" rn-index=4}
-
-
-Quarto enables you to [weave together]{.rn rn-color="red" rn-type="box" rn-index=1} content and executable code into a finished presentation. To learn more about Quarto presentations see [<https://quarto.org/docs/presentations/>]{.rn rn-color=blue rn-type="underline" rn-index=1}.
-
-## Bullets
-
-https://www.toptal.com/developers/keycode/for/meta
-
-[When you click the **Render** button a document will be generated that includes:]{.rn rn-color="green" rn-type="highlight"}
-
--   Content authored with markdown
--   Output from executable code
-
-## Code
-
-[When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:]{.rn type="highlight" rn-multiline=true rn-iterations=1}
-
-```{r}
-1 + 1
+```bash
+quarto install extension EmilHvitfeldt/quarto-roughnotation
 ```
 
+Then add it as a filter in the yaml like so
+
+```yaml
+---
+title: "RoughNotation"
+subtitle: "Quarto revealjs presentations"
+format: revealjs
+filters:
+  - roughnotation
+---
+```
+
+## Basic usage
+
+Press `R` to activate notation animations
+
+Highlighting is denoted by adding the `.rn` class to a div or span using the `[text]{.rn}` format, so the following markdown is used to create the next line
+
+<br>
+
+```md
+I will be [highlighted]{.rn}, and so will [these words right here]{.rn}
+```
+
+<br>
+
+I will be [highlighted]{.rn}, and so will [these words right here]{.rn}
+
+## Options
+
+There are many types of options we can use (Press `R` to show)
+
+- [type]{.rn rn-type=circle}
+- [animate]{.rn rn-animate=false}
+- [animationDuration]{.rn rn-animationDuration=20000}
+- [color]{.rn rn-color=blue}
+- [strokeWidth]{.rn rn-strokeWidth=3}
+- [multiline multiline multiline multiline multiline multiline multiline multiline multiline multiline]{.rn rn-multiline=true}
+- [iterations]{.rn rn-iterations=1}
+- [rtl]{.rn rn-rtl=false}
+
+## Options
+
+(Press `R` to show)
+
+The options are applied by adding arguments like so `{.rn rn-color=orange rn-type=circle}`
+
+So to add a [orange circle]{.rn rn-color=orange rn-type=circle} or [turn off animations]{.rn rn-type=underline rn-color=red rn-animate=false} by adding `rn-animate=false`
+
+Note that the arguments are all prefixed with `rn-`, are [not]{.rn} comma-separated, logical values are written as `true` or `false` and that strings do not have to be in quotes
+
+## Options - types
+
+(Press `R` to show)
+
+::: columns
+::: {.column width="50%"}
+[Underline]{.rn rn-type=underline rn-color=red}
+
+[Box]{.rn rn-type=box rn-color=purple}
+
+[Circle]{.rn rn-type=circle rn-color=blue}
+
+[Highlight]{.rn rn-type=highlight}
+
+[Strike-Through]{.rn rn-type=strike-through rn-color=green}
+
+[Crossed-off]{.rn rn-type=crossed-off rn-color=orange}
+:::
+
+::: {.column width="50%"}
+Many types to choose from!
+
+Hyphenated options can be used like so `rn-type=strike-through`
+:::
+:::
+
+## Options - Multiline
+
+(Press `R` to show)
+
+The options `rn-multiline=true` can be added to make a highligher work across multiple lines.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. [Sed accumsan nisi hendrerit augue molestie tempus. Phasellus purus quam, aliquet nec commodo quis, pharetra ut orci. Donec laoreet ligula nisl, placerat molestie mauris luctus id.]{.rn rn-multiline=true} Fusce dapibus non libero nec lobortis.
+
+## All about Time
+
+(Press `R` to show)
+
+Unless otherwise specified, all annotations will occur at the same time. Set the `rn-index` to specify order
+
+[No `rn-index`]{.rn rn-color="red" rn-type="box"}
+
+[`rn-index` set to 1]{.rn rn-color="orange" rn-type="box" rn-index=1}
+
+[`rn-index` set to 2]{.rn rn-color="yellow" rn-type="box" rn-index=2}
+
+[`rn-index` set to 3]{.rn rn-color="green" rn-type="box" rn-index=3}
+
+[`rn-index` set to 4]{.rn rn-color="blue" rn-type="box" rn-index=4}
+
+## Fenced divs
+
+You can also use fenced divs if you want to apply the changes to larger sections of of the slide
+
+````md
+::: {.rn rn-type=box rn-color=red}
+Here is some text
+
+And there is more here
+:::
+````
+
+::: {.rn rn-type=box rn-color=red}
+Here is some text
+
+And there is more here
+:::
+
+## Known issues
+
+doesn't showcase correctly in RStudio IDE
+
+Sometimes you need to adjust the zoom in your browser to get right results
