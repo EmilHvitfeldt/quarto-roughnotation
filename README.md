@@ -1,6 +1,6 @@
-# roughnotaiton
+# roughnotation
 
-An extension that uses the [roughnotaiton](https://roughnotation.com/) javascript library to add animated annotations to revealjs documents.
+An extension that uses the [roughnotation](https://roughnotation.com/) javascript library to add animated annotations to revealjs documents.
 
 ## Installation
 
@@ -12,7 +12,7 @@ quarto install extension EmilHvitfeldt/quarto-roughnotation
 
 ## Usage
 
-The roughnotaiton extension is implemented as a filter in Quarto. Once installed, using the extension is easy.
+The roughnotation extension is implemented as a filter in Quarto. Once installed, using the extension is easy.
 
 ### Setup
 
@@ -39,4 +39,3 @@ Lastly, press the `R` key to activate the animation. For more examples and optio
 Here is the source code for many of the examples: [example.qmd](https://github.com/Emilhvitfeldtt/quarto-roughnotation/blob/main/example.qmd)
 
 This is the output of [example.qmd](https://Emilhvitfeldt.github.io/quarto-roughnotation/).
-
