@@ -2,5 +2,5 @@ title: RoughNotations
 author: Emil Hvitfeldt
 version: 1.0.0
 contributes:
-  shortcodes:
+  filters:
     - rough.lua
