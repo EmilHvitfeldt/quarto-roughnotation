@@ -1,11 +1,11 @@
 ---
 title: "Untitled"
 format: revealjs
+filters:
+  - roughnotation
 ---
 
 ## Quarto
-
-{{< rn_setup >}}
 
 [weave together]{.rn rn-color="red" rn-type="box" rn-index=1 rn-animationDuration=2000}
 

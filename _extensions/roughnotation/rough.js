@@ -1,8 +1,6 @@
-<script src="_extensions/emilhvitfeldt/roughnotation/assets/rough-notation.iife.js"></script>
-<script>
-var rn_counter = 0;
+document.addEventListener("DOMContentLoaded", function () {
+  var rn_counter = 0;
 
-document.addEventListener("DOMContentLoaded", function() {
   Reveal.on("slidechanged", (event) => {
     rn_counter = 0;
   });
@@ -17,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   Reveal.addKeyBinding(
     { keyCode: 82, key: "R", description: "Trigger RoughNotation" },
-    () => {
+    function () {
       rn_counter = rn_counter + 1;
 
       const slide = Reveal.getCurrentSlide();
@@ -57,4 +55,3 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   );
 })
-</script>

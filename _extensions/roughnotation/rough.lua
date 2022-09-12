@@ -1,8 +1,12 @@
-function rn_setup()
+function Meta(m)
   quarto.doc.addHtmlDependency({
     name = "roughnotation",
-    version = "1.0.0",
+    version = "0.5.1",
     scripts = {"assets/rough-notation.iife.js"}
   })
-  quarto.doc.includeFile("after-body", "assets/roughnotation.html")
+  quarto.doc.addHtmlDependency({
+    name = "roughnotation-init",
+    version = "1.0.0",
+    scripts = {"rough.js"}
+  })
 end
