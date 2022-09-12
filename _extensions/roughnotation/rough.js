@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
             type: rn.dataset.rnType || "highlight",
             animate: strictly_false(rn.dataset.rnAnimate),
             animationDuration: parseInt(rn.dataset.rnAnimationduration) || 800,
-            color: rn.dataset.rnColor || "#000000",
+            color: rn.dataset.rnColor || "#fff17680",
             strokeWidth: parseInt(rn.dataset.rnStrokewidth) || 1,
             multiline: strictly_false(rn.dataset.rnMultiline),
             iterations: parseInt(rn.dataset.rnIterations) || 2,
