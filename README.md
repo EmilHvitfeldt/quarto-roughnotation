@@ -36,6 +36,6 @@ Lastly, press the `R` key to activate the animation. For more examples and optio
 
 ## Example
 
-Here is the source code for many of the examples: [example.qmd](https://github.com/Emilhvitfeldtt/quarto-roughnotation/blob/main/example.qmd)
+Here is the source code for many of the examples: [example.qmd](https://github.com/EmilHvitfeldt/quarto-roughnotation/blob/main/example.qmd)
 
 This is the output of [example.qmd](https://Emilhvitfeldt.github.io/quarto-roughnotation/).
