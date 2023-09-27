@@ -1,7 +1,9 @@
 ---
 title: "RoughNotation"
 subtitle: "Quarto revealjs presentations"
-format: revealjs
+format:
+  revealjs:
+    footer: <https://github.com/emilhvitfeldt/quarto-roughnotation>
 filters:
   - roughnotation
 ---
