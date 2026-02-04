@@ -18,6 +18,29 @@ document.addEventListener("DOMContentLoaded", function () {
     return out;
   }
 
+  // Helper to create annotation options from an element
+  function getAnnotationOptions(el, animate) {
+    return {
+      type: el.dataset.rnType || "highlight",
+      animate: animate !== undefined ? animate : strictly_false(el.dataset.rnAnimate),
+      animationDuration: parseInt(el.dataset.rnAnimationduration) || 800,
+      color: el.dataset.rnColor || "#fff17680",
+      strokeWidth: parseInt(el.dataset.rnStrokewidth) || 1,
+      multiline: strictly_false(el.dataset.rnMultiline),
+      iterations: parseInt(el.dataset.rnIterations) || 2,
+      rtl: !strictly_false(el.dataset.rnRtl),
+    };
+  }
+
+  // Apply inverse scale to SVG to counteract RevealJS transform
+  function applyInverseScale(annotation) {
+    if (annotation._svg) {
+      const scale = Reveal.getScale();
+      annotation._svg.style.transform = `scale(${1 / scale})`;
+      annotation._svg.style.transformOrigin = "top left";
+    }
+  }
+
   Reveal.addKeyBinding(
     { keyCode: 82, key: "R", description: "Trigger RoughNotation" },
     function () {
@@ -42,16 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
           return true;
         })
         .map(function (rn) {
-          return RoughNotation.annotate(rn, {
-            type: rn.dataset.rnType || "highlight",
-            animate: strictly_false(rn.dataset.rnAnimate),
-            animationDuration: parseInt(rn.dataset.rnAnimationduration) || 800,
-            color: rn.dataset.rnColor || "#fff17680",
-            strokeWidth: parseInt(rn.dataset.rnStrokewidth) || 1,
-            multiline: strictly_false(rn.dataset.rnMultiline),
-            iterations: parseInt(rn.dataset.rnIterations) || 2,
-            rtl: !strictly_false(rn.dataset.rnRtl),
-          });
+          return RoughNotation.annotate(rn, getAnnotationOptions(rn));
         });
 
       new_divs.map(function (rn) {
@@ -72,16 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Create annotation if not already created
       if (!fragmentAnnotations.has(fragment)) {
-        const annotation = RoughNotation.annotate(fragment, {
-          type: fragment.dataset.rnType || "highlight",
-          animate: strictly_false(fragment.dataset.rnAnimate),
-          animationDuration: parseInt(fragment.dataset.rnAnimationduration) || 800,
-          color: fragment.dataset.rnColor || "#fff17680",
-          strokeWidth: parseInt(fragment.dataset.rnStrokewidth) || 1,
-          multiline: strictly_false(fragment.dataset.rnMultiline),
-          iterations: parseInt(fragment.dataset.rnIterations) || 2,
-          rtl: !strictly_false(fragment.dataset.rnRtl),
-        });
+        const annotation = RoughNotation.annotate(fragment, getAnnotationOptions(fragment));
         fragmentAnnotations.set(fragment, annotation);
       }
 
@@ -92,6 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
         annotation._svg.style.opacity = "";
       }
       annotation.show();
+      applyInverseScale(annotation);
     }
   });
 
@@ -115,5 +121,16 @@ document.addEventListener("DOMContentLoaded", function () {
         annotation.hide();
       }
     }
+  });
+
+  // Handle resize - update inverse scale on all annotations
+  var resizeTimeout;
+  Reveal.on("resize", (event) => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      fragmentAnnotations.forEach((annotation, fragment) => {
+        applyInverseScale(annotation);
+      });
+    }, 50);
   });
 })
