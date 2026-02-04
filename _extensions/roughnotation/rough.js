@@ -1,8 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
   var rn_counter = 0;
 
+  // Store annotations for fragment-based triggering
+  var fragmentAnnotations = new Map();
+
   Reveal.on("slidechanged", (event) => {
     rn_counter = 0;
+    fragmentAnnotations.clear();
   });
 
   function strictly_false(x) {
@@ -54,4 +58,33 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   );
+
+  // Fragment-based annotation triggering
+  Reveal.on("fragmentshown", (event) => {
+    const fragment = event.fragment;
+    if (fragment.classList.contains("rn-fragment")) {
+      // Create annotation if not already created
+      if (!fragmentAnnotations.has(fragment)) {
+        const annotation = RoughNotation.annotate(fragment, {
+          type: fragment.dataset.rnType || "highlight",
+          animate: strictly_false(fragment.dataset.rnAnimate),
+          animationDuration: parseInt(fragment.dataset.rnAnimationduration) || 800,
+          color: fragment.dataset.rnColor || "#fff17680",
+          strokeWidth: parseInt(fragment.dataset.rnStrokewidth) || 1,
+          multiline: strictly_false(fragment.dataset.rnMultiline),
+          iterations: parseInt(fragment.dataset.rnIterations) || 2,
+          rtl: !strictly_false(fragment.dataset.rnRtl),
+        });
+        fragmentAnnotations.set(fragment, annotation);
+      }
+      fragmentAnnotations.get(fragment).show();
+    }
+  });
+
+  Reveal.on("fragmenthidden", (event) => {
+    const fragment = event.fragment;
+    if (fragment.classList.contains("rn-fragment") && fragmentAnnotations.has(fragment)) {
+      fragmentAnnotations.get(fragment).hide();
+    }
+  });
 })

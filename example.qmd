@@ -135,6 +135,30 @@ Here is some text
 And there is more here
 :::
 
+## Fragment Usage - Basic
+
+Use arrow keys or spacebar to trigger annotations:
+
+This text has a [highlighted word]{.rn-fragment} that appears on trigger.
+
+And this has an [underlined phrase]{.rn-fragment rn-type=underline rn-color=red}.
+
+## Fragment Usage - Ordering
+
+Annotations appear in order based on `fragment-index`:
+
+[Third]{.rn-fragment rn-type=box rn-color=blue fragment-index=3}
+
+[First]{.rn-fragment rn-type=circle rn-color=red fragment-index=1}
+
+[Second]{.rn-fragment rn-type=highlight fragment-index=2}
+
+## Fragment Usage - Fenced Div
+
+::: {.rn-fragment rn-type=box rn-color=purple}
+This entire block gets a box annotation when triggered.
+:::
+
 ## Known issues
 
 doesn't showcase correctly in RStudio IDE
