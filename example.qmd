@@ -94,8 +94,26 @@ Set the annotation color. Default is yellow highlight color.
 
 [Blue]{.rn-fragment rn-color=blue fragment-index=1} | [Red]{.rn-fragment rn-color=red fragment-index=2} | [Green]{.rn-fragment rn-color=green fragment-index=3} | [Purple]{.rn-fragment rn-color=purple fragment-index=4}
 
+<br>
+
 ::: {.rn-fragment rn-type=box rn-color=orange fragment-index=5}
 Div with `rn-color=orange`
+:::
+
+## rn-color (formats)
+
+Colors can be specified in multiple formats:
+
+::: {style="font-size: 0.9em;"}
+[Color name]{.rn-fragment rn-type=underline rn-color=tomato fragment-index=1} - `rn-color=tomato`
+
+[Hex code]{.rn-fragment rn-type=underline rn-color=#3498db fragment-index=2} - `rn-color=#3498db`
+
+[Hex with alpha]{.rn-fragment rn-type=highlight rn-color=#e74c3c80 fragment-index=3} - `rn-color=#e74c3c80` (50% opacity)
+
+[RGB]{.rn-fragment rn-type=underline rn-color="rgb(46, 204, 113)" fragment-index=4} - `rn-color="rgb(46, 204, 113)"`
+
+[RGBA]{.rn-fragment rn-type=highlight rn-color="rgba(155, 89, 182, 0.5)" fragment-index=5} - `rn-color="rgba(155, 89, 182, 0.5)"`
 :::
 
 ## rn-animate
@@ -105,6 +123,8 @@ Disable animation with `rn-animate=false`. Default is `true`.
 [With animation (default)]{.rn-fragment rn-type=underline rn-color=blue fragment-index=1}
 
 [Without animation]{.rn-fragment rn-type=underline rn-color=red rn-animate=false fragment-index=2}
+
+<br>
 
 ::: {.rn-fragment rn-type=box rn-color=green rn-animate=false fragment-index=3}
 Div without animation
@@ -120,6 +140,8 @@ Set animation duration in milliseconds. Default is `800`.
 
 [Slow (2000ms)]{.rn-fragment rn-type=underline rn-color=red rn-animationDuration=2000 fragment-index=3}
 
+<br>
+
 ::: {.rn-fragment rn-type=box rn-color=purple rn-animationDuration=1500 fragment-index=4}
 Div with 1500ms animation
 :::
@@ -133,6 +155,8 @@ Set line thickness. Default is `1`.
 [Medium (3)]{.rn-fragment rn-type=underline rn-color=green rn-strokeWidth=3 fragment-index=2}
 
 [Thick (5)]{.rn-fragment rn-type=underline rn-color=red rn-strokeWidth=5 fragment-index=3}
+
+<br>
 
 ::: {.rn-fragment rn-type=box rn-color=purple rn-strokeWidth=4 fragment-index=4}
 Div with `rn-strokeWidth=4`
@@ -148,6 +172,8 @@ Set space around the element in pixels. Default is `5`.
 
 [Large padding (20)]{.rn-fragment rn-type=box rn-color=red rn-padding=20 fragment-index=3}
 
+<br>
+
 ::: {.rn-fragment rn-type=circle rn-color=purple rn-padding=15 fragment-index=4}
 Div with `rn-padding=15`
 :::
@@ -157,6 +183,8 @@ Div with `rn-padding=15`
 Enable annotations across multiple lines with `rn-multiline=true`.
 
 Lorem ipsum dolor sit amet. [This span wraps across multiple lines to demonstrate the multiline option working correctly.]{.rn-fragment rn-multiline=true fragment-index=1} Consectetur adipiscing elit.
+
+<br>
 
 ::: {.rn-fragment rn-type=box rn-color=purple rn-multiline=true fragment-index=2}
 This div spans multiple lines and uses multiline mode for proper annotation rendering.
@@ -172,6 +200,8 @@ Set the number of drawing passes. Default is `2`. Higher values create rougher l
 
 [Many passes (5)]{.rn-fragment rn-type=underline rn-color=red rn-iterations=5 fragment-index=3}
 
+<br>
+
 ::: {.rn-fragment rn-type=box rn-color=purple rn-iterations=4 fragment-index=4}
 Div with `rn-iterations=4`
 :::
@@ -186,6 +216,8 @@ For `rn-type=bracket`, specify which sides to draw. Options: `left`, `right`, `t
 
 [Both sides]{.rn-fragment rn-type=bracket rn-color=red rn-brackets=left,right fragment-index=3}
 
+<br>
+
 ::: {.rn-fragment rn-type=bracket rn-color=purple rn-brackets=top,bottom fragment-index=4}
 Div with top and bottom brackets
 :::
@@ -197,6 +229,8 @@ Draw annotation right-to-left with `rn-rtl=true`. Default is `false`.
 [Left-to-right (default)]{.rn-fragment rn-type=underline rn-color=blue fragment-index=1}
 
 [Right-to-left]{.rn-fragment rn-type=underline rn-color=red rn-rtl=true fragment-index=2}
+
+<br>
 
 ::: {.rn-fragment rn-type=box rn-color=purple rn-rtl=true fragment-index=3}
 Div with right-to-left animation
