@@ -28,7 +28,107 @@ filters:
 ---
 ```
 
-## Basic usage
+## Fragment Usage - Basic
+
+Use arrow keys or spacebar to trigger annotations. Add the `.rn-fragment` class to any span or div. Options like `rn-type` and `rn-color` customize the annotation style.
+
+```md
+[highlighted word]{.rn-fragment}
+[underlined phrase]{.rn-fragment rn-type=underline rn-color=red}
+```
+
+This text has a [highlighted word]{.rn-fragment} that appears on trigger.
+
+And this has an [underlined phrase]{.rn-fragment rn-type=underline rn-color=red}.
+
+## Fragment Usage - Ordering
+
+Control the order annotations appear using the standard RevealJS `fragment-index` attribute. Lower numbers trigger first, regardless of position in the document.
+
+```md
+[Third]{.rn-fragment rn-type=box rn-color=blue fragment-index=3}
+[First]{.rn-fragment rn-type=circle rn-color=red fragment-index=1}
+[Second]{.rn-fragment rn-type=highlight fragment-index=2}
+```
+
+[Third]{.rn-fragment rn-type=box rn-color=blue fragment-index=3}
+
+[First]{.rn-fragment rn-type=circle rn-color=red fragment-index=1}
+
+[Second]{.rn-fragment rn-type=highlight fragment-index=2}
+
+## Fragment Usage - Fenced Div
+
+Use fenced divs to annotate larger blocks of content. This is useful for highlighting paragraphs, lists, or other multi-line elements.
+
+````md
+::: {.rn-fragment rn-type=box rn-color=purple}
+This entire block gets a box annotation when triggered.
+:::
+````
+
+::: {.rn-fragment rn-type=box rn-color=purple}
+This entire block gets a box annotation when triggered.
+:::
+
+## Options
+
+There are many types of options we can use:
+
+- [type]{.rn-fragment rn-type=circle fragment-index=1}
+- [animate]{.rn-fragment rn-animate=false fragment-index=2}
+- [animationDuration]{.rn-fragment rn-animationDuration=2000 fragment-index=3}
+- [color]{.rn-fragment rn-color=blue fragment-index=4}
+- [strokeWidth]{.rn-fragment rn-strokeWidth=3 fragment-index=5}
+- [multiline multiline multiline multiline multiline multiline multiline multiline multiline multiline]{.rn-fragment rn-multiline=true fragment-index=6}
+- [iterations]{.rn-fragment rn-iterations=1 fragment-index=7}
+- [rtl]{.rn-fragment rn-rtl=false fragment-index=8}
+
+## Options
+
+The options are applied by adding arguments like so `{.rn-fragment rn-color=orange rn-type=circle}`
+
+So to add a [orange circle]{.rn-fragment rn-color=orange rn-type=circle} or [turn off animations]{.rn-fragment rn-type=underline rn-color=red rn-animate=false} by adding `rn-animate=false`
+
+Note that the arguments are all prefixed with `rn-`, are [not]{.rn-fragment} comma-separated, logical values are written as `true` or `false` and that strings do not have to be in quotes
+
+## Options - types
+
+::: columns
+::: {.column width="50%"}
+[Underline]{.rn-fragment rn-type=underline rn-color=red fragment-index=1}
+
+[Box]{.rn-fragment rn-type=box rn-color=purple fragment-index=2}
+
+[Circle]{.rn-fragment rn-type=circle rn-color=blue fragment-index=3}
+
+[Highlight]{.rn-fragment rn-type=highlight fragment-index=4}
+
+[Strike-Through]{.rn-fragment rn-type=strike-through rn-color=green fragment-index=5}
+
+[Crossed-off]{.rn-fragment rn-type=crossed-off rn-color=orange fragment-index=6}
+:::
+
+::: {.column width="50%"}
+Many types to choose from!
+
+Hyphenated options can be used like so `rn-type=strike-through`
+:::
+:::
+
+## Options - Multiline
+
+The options `rn-multiline=true` can be added to make a highlighter work across multiple lines.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. [Sed accumsan nisi hendrerit augue molestie tempus. Phasellus purus quam, aliquet nec commodo quis, pharetra ut orci. Donec laoreet ligula nisl, placerat molestie mauris luctus id.]{.rn-fragment rn-multiline=true} Fusce dapibus non libero nec lobortis.
+
+## Old Usage (R key)
+
+The following 2 slides are showing how the extension used to work. This is still in effect but has more bugs that are harder to fix.
+
+You are encouraged to use the newly implemented fragment interface.
+
+## Basic usage (R key)
 
 Press `R` to activate notation animations
 
@@ -44,64 +144,7 @@ I will be [highlighted]{.rn}, and so will [these words right here]{.rn}
 
 I will be [highlighted]{.rn}, and so will [these words right here]{.rn}
 
-## Options
-
-There are many types of options we can use (Press `R` to show)
-
-- [type]{.rn rn-type=circle}
-- [animate]{.rn rn-animate=false}
-- [animationDuration]{.rn rn-animationDuration=20000}
-- [color]{.rn rn-color=blue}
-- [strokeWidth]{.rn rn-strokeWidth=3}
-- [multiline multiline multiline multiline multiline multiline multiline multiline multiline multiline]{.rn rn-multiline=true}
-- [iterations]{.rn rn-iterations=1}
-- [rtl]{.rn rn-rtl=false}
-
-## Options
-
-(Press `R` to show)
-
-The options are applied by adding arguments like so `{.rn rn-color=orange rn-type=circle}`
-
-So to add a [orange circle]{.rn rn-color=orange rn-type=circle} or [turn off animations]{.rn rn-type=underline rn-color=red rn-animate=false} by adding `rn-animate=false`
-
-Note that the arguments are all prefixed with `rn-`, are [not]{.rn} comma-separated, logical values are written as `true` or `false` and that strings do not have to be in quotes
-
-## Options - types
-
-(Press `R` to show)
-
-::: columns
-::: {.column width="50%"}
-[Underline]{.rn rn-type=underline rn-color=red}
-
-[Box]{.rn rn-type=box rn-color=purple}
-
-[Circle]{.rn rn-type=circle rn-color=blue}
-
-[Highlight]{.rn rn-type=highlight}
-
-[Strike-Through]{.rn rn-type=strike-through rn-color=green}
-
-[Crossed-off]{.rn rn-type=crossed-off rn-color=orange}
-:::
-
-::: {.column width="50%"}
-Many types to choose from!
-
-Hyphenated options can be used like so `rn-type=strike-through`
-:::
-:::
-
-## Options - Multiline
-
-(Press `R` to show)
-
-The options `rn-multiline=true` can be added to make a highligher work across multiple lines.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. [Sed accumsan nisi hendrerit augue molestie tempus. Phasellus purus quam, aliquet nec commodo quis, pharetra ut orci. Donec laoreet ligula nisl, placerat molestie mauris luctus id.]{.rn rn-multiline=true} Fusce dapibus non libero nec lobortis.
-
-## All about Time
+## All about Time (R key)
 
 (Press `R` to show)
 
@@ -116,48 +159,6 @@ Unless otherwise specified, all annotations will occur at the same time. Set the
 [`rn-index` set to 3]{.rn rn-color="green" rn-type="box" rn-index=3}
 
 [`rn-index` set to 4]{.rn rn-color="blue" rn-type="box" rn-index=4}
-
-## Fenced divs
-
-You can also use fenced divs if you want to apply the changes to larger sections of of the slide
-
-````md
-::: {.rn rn-type=box rn-color=red}
-Here is some text
-
-And there is more here
-:::
-````
-
-::: {.rn rn-type=box rn-color=red}
-Here is some text
-
-And there is more here
-:::
-
-## Fragment Usage - Basic
-
-Use arrow keys or spacebar to trigger annotations:
-
-This text has a [highlighted word]{.rn-fragment} that appears on trigger.
-
-And this has an [underlined phrase]{.rn-fragment rn-type=underline rn-color=red}.
-
-## Fragment Usage - Ordering
-
-Annotations appear in order based on `fragment-index`:
-
-[Third]{.rn-fragment rn-type=box rn-color=blue fragment-index=3}
-
-[First]{.rn-fragment rn-type=circle rn-color=red fragment-index=1}
-
-[Second]{.rn-fragment rn-type=highlight fragment-index=2}
-
-## Fragment Usage - Fenced Div
-
-::: {.rn-fragment rn-type=box rn-color=purple}
-This entire block gets a box annotation when triggered.
-:::
 
 ## Known issues
 
