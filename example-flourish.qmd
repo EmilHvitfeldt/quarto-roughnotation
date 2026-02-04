@@ -17,6 +17,7 @@ Install both extensions:
 quarto add EmilHvitfeldt/quarto-roughnotation
 quarto add kbodwin/flourish
 ```
+
 Then add both as filters (order matters - flourish first):
 
 ```yaml
