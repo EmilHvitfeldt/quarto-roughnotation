@@ -1,0 +1,116 @@
+---
+title: "quarto-roughnotation"
+subtitle: "Animated hand-drawn annotations for RevealJS presentations"
+---
+
+An extension that uses the [roughnotation](https://roughnotation.com/) JavaScript library to add animated, sketch-style annotations to RevealJS documents.
+
+## Installation
+
+```bash
+quarto add EmilHvitfeldt/quarto-roughnotation
+```
+
+## Quick Start
+
+Add the filter to your YAML header:
+
+```yaml
+---
+title: My Presentation
+format: revealjs
+filters:
+  - roughnotation
+---
+```
+
+Then use the `.rn-fragment` class to annotate text:
+
+```markdown
+[highlighted word]{.rn-fragment}
+[underlined phrase]{.rn-fragment rn-type=underline rn-color=red}
+```
+
+Use arrow keys or spacebar to trigger annotations as you navigate through slides.
+
+## Examples
+
+### Basic Usage
+
+Full demonstration of all annotation types and options.
+
+[View Example](example.html){.btn .btn-primary}
+[Source Code](https://github.com/EmilHvitfeldt/quarto-roughnotation/blob/main/example.qmd){.btn .btn-secondary}
+
+<iframe src="example.html" width="100%" height="500" style="border: 1px solid #ccc; border-radius: 4px;"></iframe>
+
+### Code Chunk Annotations (with Flourish)
+
+Annotate specific text within code chunks by combining roughnotation with the [flourish](https://github.com/kbodwin/flourish) extension.
+
+[View Example](example-flourish.html){.btn .btn-primary}
+[Source Code](https://github.com/EmilHvitfeldt/quarto-roughnotation/blob/main/example-flourish.qmd){.btn .btn-secondary}
+
+<iframe src="example-flourish.html" width="100%" height="500" style="border: 1px solid #ccc; border-radius: 4px;"></iframe>
+
+## Annotation Types
+
+| Type | Description |
+|------|-------------|
+| `highlight` | Yellow marker highlight (default) |
+| `underline` | Underline the text |
+| `box` | Draw a box around the element |
+| `circle` | Draw a circle around the element |
+| `strike-through` | Strike through the text |
+| `crossed-off` | Cross off with an X |
+| `bracket` | Draw brackets around the element |
+
+## Options
+
+All options are prefixed with `rn-`:
+
+| Option | Example | Description |
+|--------|---------|-------------|
+| `rn-type` | `rn-type=underline` | Annotation style |
+| `rn-color` | `rn-color=blue` | Annotation color |
+| `rn-animate` | `rn-animate=false` | Disable animation |
+| `rn-animationDuration` | `rn-animationDuration=2000` | Animation duration in ms |
+| `rn-strokeWidth` | `rn-strokeWidth=3` | Line thickness |
+| `rn-padding` | `rn-padding=10` | Space around element |
+| `rn-multiline` | `rn-multiline=true` | Annotate across multiple lines |
+| `rn-iterations` | `rn-iterations=1` | Number of drawing passes |
+| `rn-brackets` | `rn-brackets=left,right` | Bracket sides (for bracket type) |
+
+## Code Chunk Annotations
+
+To annotate code chunks, install both extensions:
+
+```bash
+quarto add EmilHvitfeldt/quarto-roughnotation
+quarto add kbodwin/flourish
+```
+
+Add both filters (flourish must come first):
+
+```yaml
+filters:
+  - flourish
+  - roughnotation
+```
+
+Use CSS custom properties in flourish's style option:
+
+````markdown
+```{{r}}
+#| flourish:
+#|   - target: "mean"
+#|     style: "--rn-type: circle; --rn-color: red;"
+mean(x)
+```
+````
+
+## Links
+
+- [GitHub Repository](https://github.com/EmilHvitfeldt/quarto-roughnotation)
+- [RoughNotation Library](https://roughnotation.com/)
+- [Flourish Extension](https://github.com/kbodwin/flourish)
