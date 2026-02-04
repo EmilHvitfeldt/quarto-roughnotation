@@ -3,8 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Store annotations for fragment-based triggering
   var fragmentAnnotations = new Map();
-  // Store pending hide timeouts to allow cancellation
-  var pendingHideTimeouts = new Map();
 
   Reveal.on("slidechanged", (event) => {
     rn_counter = 0;
@@ -41,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const options = {
       type: el.dataset.rnType || "highlight",
       animate: animate !== undefined ? animate : strictly_false(el.dataset.rnAnimate),
+      animateOnHide: true, // Use library's built-in animated hide
       animationDuration: parseInt(el.dataset.rnAnimationduration) || 800,
       color: el.dataset.rnColor || "#fff17680",
       strokeWidth: parseInt(el.dataset.rnStrokewidth) || 1,
@@ -104,12 +103,6 @@ document.addEventListener("DOMContentLoaded", function () {
   Reveal.on("fragmentshown", (event) => {
     const fragment = event.fragment;
     if (fragment.classList.contains("rn-fragment")) {
-      // Cancel any pending hide timeout
-      if (pendingHideTimeouts.has(fragment)) {
-        clearTimeout(pendingHideTimeouts.get(fragment));
-        pendingHideTimeouts.delete(fragment);
-      }
-
       // Create annotation if not already created
       if (!fragmentAnnotations.has(fragment)) {
         const annotation = RoughNotation.annotate(fragment, getAnnotationOptions(fragment));
@@ -117,11 +110,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       const annotation = fragmentAnnotations.get(fragment);
-      // Reset SVG opacity in case it was mid-fade
-      if (annotation._svg) {
-        annotation._svg.style.transition = "";
-        annotation._svg.style.opacity = "";
-      }
       annotation.show();
       applyInverseScale(annotation);
     }
@@ -131,21 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const fragment = event.fragment;
     if (fragment.classList.contains("rn-fragment") && fragmentAnnotations.has(fragment)) {
       const annotation = fragmentAnnotations.get(fragment);
-      const svg = annotation._svg;
-      if (svg) {
-        const duration = parseInt(fragment.dataset.rnAnimationduration) || 800;
-        svg.style.transition = `opacity ${duration}ms ease-out`;
-        svg.style.opacity = "0";
-        const timeoutId = setTimeout(() => {
-          pendingHideTimeouts.delete(fragment);
-          annotation.hide();
-          svg.style.transition = "";
-          svg.style.opacity = "";
-        }, duration);
-        pendingHideTimeouts.set(fragment, timeoutId);
-      } else {
-        annotation.hide();
-      }
+      annotation.hide();
     }
   });
 
