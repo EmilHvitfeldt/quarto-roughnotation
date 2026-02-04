@@ -2,6 +2,16 @@
 
 ## New Features
 
+### Flourish Integration
+
+* Added bridge script to enable code chunk annotations when used with the
+  [flourish](https://github.com/kbodwin/flourish) extension.
+
+* Use flourish's `style` option to pass roughnotation config via CSS custom
+  properties (e.g., `--rn-type: circle; --rn-color: red;`).
+
+* Added `example-flourish.qmd` demonstrating the integration.
+
 ### Fragment-based Triggering
 
 * Added new `.rn-fragment` class for triggering annotations via RevealJS fragments

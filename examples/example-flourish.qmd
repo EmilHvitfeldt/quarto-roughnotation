@@ -1,0 +1,143 @@
+---
+title: "RoughNotation + Flourish"
+subtitle: "Animated code annotations"
+format:
+  revealjs:
+    footer: <https://github.com/emilhvitfeldt/quarto-roughnotation>
+filters:
+  - flourish
+  - roughnotation
+---
+
+## Setup
+
+Install both extensions:
+
+```bash
+quarto add EmilHvitfeldt/quarto-roughnotation
+quarto add kbodwin/flourish
+```
+
+Then add both as filters (order matters - flourish first):
+
+```yaml
+filters:
+  - flourish
+  - roughnotation
+```
+
+## Basic Usage
+
+Use flourish's `style` option to pass roughnotation config via CSS custom properties:
+```yaml
+#| flourish:
+#|   - target: "mean"
+#|     style: "--rn-type: circle; --rn-color: red;"
+```
+
+## Circle annotation
+
+```{r}
+#| echo: true
+#| flourish:
+#|   - target: "mean"
+#|     style: "--rn-type: circle; --rn-color: red;"
+x <- c(1, 2, 3, 4, 5)
+mean(x)
+```
+
+## Underline annotation
+
+```{r}
+#| echo: true
+#| flourish:
+#|   - target: "quantile"
+#|     style: "--rn-type: underline; --rn-color: blue; --rn-strokeWidth: 3;"
+x <- c(1, 2, 3, 4, 5)
+quantile(x)
+```
+
+## Box annotation
+
+```{r}
+#| echo: true
+#| flourish:
+#|   - target: "lm"
+#|     style: "--rn-type: box; --rn-color: purple;"
+model <- lm(mpg ~ wt, data = mtcars)
+summary(model)
+```
+
+## Highlight annotation
+
+```{r}
+#| echo: true
+#| flourish:
+#|   - target: "filter"
+#|     style: "--rn-type: highlight; --rn-color: #ffeb3b80;"
+library(dplyr)
+mtcars |> filter(mpg > 20)
+```
+
+## Multiple targets
+
+```{r}
+#| echo: true
+#| flourish:
+#|   - target: "mean"
+#|     style: "--rn-type: circle; --rn-color: red; --rn-index: 1;"
+#|   - target: "quantile"
+#|     style: "--rn-type: underline; --rn-color: blue; --rn-index: 2;"
+#|   - target: "median"
+#|     style: "--rn-type: box; --rn-color: green; --rn-index: 3;"
+x <- c(1, 2, 3, 4, 5)
+mean(x)
+quantile(x)
+median(x)
+```
+
+## Regex targeting
+
+Use flourish's `target-rx` for pattern matching:
+
+```{r}
+#| echo: true
+#| flourish:
+#|   - target-rx: "mpg|wt|hp"
+#|     style: "--rn-type: highlight; --rn-color: #e91e6380;"
+head(mtcars[, c("mpg", "wt", "hp")])
+```
+
+## Available options
+
+All roughnotation options work via CSS custom properties:
+
+::: {style="font-size: 0.55em;"}
+| Property | Example | Description |
+|----------|---------|-------------|
+| `--rn-type` | `circle` | underline, box, circle, highlight, strike-through, crossed-off, bracket |
+| `--rn-color` | `red` | Any CSS color |
+| `--rn-animate` | `true` | Enable/disable animation |
+| `--rn-animationDuration` | `800` | Duration in ms |
+| `--rn-strokeWidth` | `2` | Line thickness |
+| `--rn-padding` | `5` | Space around element |
+| `--rn-multiline` | `true` | Annotate across lines |
+| `--rn-iterations` | `2` | Drawing passes |
+| `--rn-brackets` | `left,right` | Bracket sides |
+| `--rn-index` | `1` | Fragment order |
+:::
+
+## Combining with regular text
+
+You can mix code annotations with regular text annotations:
+
+This text has a [highlighted word]{.rn-fragment rn-color=orange}.
+
+```{r}
+#| echo: true
+#| flourish:
+#|   - target: "ggplot"
+#|     style: "--rn-type: box; --rn-color: steelblue;"
+library(ggplot2)
+ggplot(mtcars, aes(wt, mpg)) + geom_point()
+```
