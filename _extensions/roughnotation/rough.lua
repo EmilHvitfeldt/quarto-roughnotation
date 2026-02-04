@@ -28,4 +28,10 @@ function Meta(m)
     scripts = {"rough.js"},
     stylesheets = {"rough.css"}
   })
+  -- Add flourish bridge if flourish extension is being used
+  quarto.doc.addHtmlDependency({
+    name = "roughnotation-flourish-bridge",
+    version = "1.0.0",
+    scripts = {"flourish-bridge.js"}
+  })
 end
