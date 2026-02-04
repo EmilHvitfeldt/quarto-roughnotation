@@ -84,7 +84,20 @@ document.addEventListener("DOMContentLoaded", function () {
   Reveal.on("fragmenthidden", (event) => {
     const fragment = event.fragment;
     if (fragment.classList.contains("rn-fragment") && fragmentAnnotations.has(fragment)) {
-      fragmentAnnotations.get(fragment).hide();
+      const annotation = fragmentAnnotations.get(fragment);
+      const svg = annotation._svg;
+      if (svg) {
+        const duration = parseInt(fragment.dataset.rnAnimationduration) || 800;
+        svg.style.transition = `opacity ${duration}ms ease-out`;
+        svg.style.opacity = "0";
+        setTimeout(() => {
+          annotation.hide();
+          svg.style.transition = "";
+          svg.style.opacity = "";
+        }, duration);
+      } else {
+        annotation.hide();
+      }
     }
   });
 })
