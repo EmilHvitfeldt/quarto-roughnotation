@@ -1,4 +1,6 @@
--- Add .fragment class to elements with .rn-fragment
+-- Automatically add RevealJS .fragment class to elements with .rn-fragment.
+-- This is required for RevealJS to recognize the element as a fragment and
+-- trigger fragmentshown/fragmenthidden events on navigation.
 local function add_fragment_class(el)
   if el.classes:includes("rn-fragment") then
     el.classes:insert("fragment")
