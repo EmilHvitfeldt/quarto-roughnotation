@@ -3,3 +3,9 @@
 .Rdata
 .httr-oauth
 .DS_Store
+
+/.luarc.json
+
+example_files/
+.claude/
+example.html
