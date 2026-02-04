@@ -3,10 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Store annotations for fragment-based triggering
   var fragmentAnnotations = new Map();
+  // Store pending hide timeouts to allow cancellation
+  var pendingHideTimeouts = new Map();
 
   Reveal.on("slidechanged", (event) => {
     rn_counter = 0;
-    fragmentAnnotations.clear();
   });
 
   function strictly_false(x) {
@@ -63,6 +64,12 @@ document.addEventListener("DOMContentLoaded", function () {
   Reveal.on("fragmentshown", (event) => {
     const fragment = event.fragment;
     if (fragment.classList.contains("rn-fragment")) {
+      // Cancel any pending hide timeout
+      if (pendingHideTimeouts.has(fragment)) {
+        clearTimeout(pendingHideTimeouts.get(fragment));
+        pendingHideTimeouts.delete(fragment);
+      }
+
       // Create annotation if not already created
       if (!fragmentAnnotations.has(fragment)) {
         const annotation = RoughNotation.annotate(fragment, {
@@ -77,7 +84,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         fragmentAnnotations.set(fragment, annotation);
       }
-      fragmentAnnotations.get(fragment).show();
+
+      const annotation = fragmentAnnotations.get(fragment);
+      // Reset SVG opacity in case it was mid-fade
+      if (annotation._svg) {
+        annotation._svg.style.transition = "";
+        annotation._svg.style.opacity = "";
+      }
+      annotation.show();
     }
   });
 
@@ -90,11 +104,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const duration = parseInt(fragment.dataset.rnAnimationduration) || 800;
         svg.style.transition = `opacity ${duration}ms ease-out`;
         svg.style.opacity = "0";
-        setTimeout(() => {
+        const timeoutId = setTimeout(() => {
+          pendingHideTimeouts.delete(fragment);
           annotation.hide();
           svg.style.transition = "";
           svg.style.opacity = "";
         }, duration);
+        pendingHideTimeouts.set(fragment, timeoutId);
       } else {
         annotation.hide();
       }
