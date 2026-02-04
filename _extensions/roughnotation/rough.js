@@ -18,9 +18,27 @@ document.addEventListener("DOMContentLoaded", function () {
     return out;
   }
 
+  // Helper to parse padding (can be single number or comma-separated array)
+  function parsePadding(value) {
+    if (!value) return 5;
+    if (value.includes(",")) {
+      return value.split(",").map(v => parseInt(v.trim()));
+    }
+    return parseInt(value);
+  }
+
+  // Helper to parse brackets (can be single string or comma-separated array)
+  function parseBrackets(value) {
+    if (!value) return "right";
+    if (value.includes(",")) {
+      return value.split(",").map(v => v.trim());
+    }
+    return value;
+  }
+
   // Helper to create annotation options from an element
   function getAnnotationOptions(el, animate) {
-    return {
+    const options = {
       type: el.dataset.rnType || "highlight",
       animate: animate !== undefined ? animate : strictly_false(el.dataset.rnAnimate),
       animationDuration: parseInt(el.dataset.rnAnimationduration) || 800,
@@ -29,7 +47,15 @@ document.addEventListener("DOMContentLoaded", function () {
       multiline: strictly_false(el.dataset.rnMultiline),
       iterations: parseInt(el.dataset.rnIterations) || 2,
       rtl: !strictly_false(el.dataset.rnRtl),
+      padding: parsePadding(el.dataset.rnPadding),
     };
+
+    // Add brackets option only for bracket type
+    if (options.type === "bracket") {
+      options.brackets = parseBrackets(el.dataset.rnBrackets);
+    }
+
+    return options;
   }
 
   // Apply inverse scale to SVG to counteract RevealJS transform
