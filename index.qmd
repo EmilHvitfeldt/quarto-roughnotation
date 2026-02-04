@@ -39,19 +39,19 @@ Use arrow keys or spacebar to trigger annotations as you navigate through slides
 
 Full demonstration of all annotation types and options.
 
-[View Example](example.html){.btn .btn-primary}
-[Source Code](https://github.com/EmilHvitfeldt/quarto-roughnotation/blob/main/example.qmd){.btn .btn-secondary}
+[View Example](examples/example.html){.btn .btn-primary}
+[Source Code](https://github.com/EmilHvitfeldt/quarto-roughnotation/blob/main/examples/example.qmd){.btn .btn-secondary}
 
-<iframe src="example.html" width="100%" height="500" style="border: 1px solid #ccc; border-radius: 4px;"></iframe>
+<iframe src="examples/example.html" width="100%" height="500" style="border: 1px solid #ccc; border-radius: 4px;"></iframe>
 
 ### Code Chunk Annotations (with Flourish)
 
 Annotate specific text within code chunks by combining roughnotation with the [flourish](https://github.com/kbodwin/flourish) extension.
 
-[View Example](example-flourish.html){.btn .btn-primary}
-[Source Code](https://github.com/EmilHvitfeldt/quarto-roughnotation/blob/main/example-flourish.qmd){.btn .btn-secondary}
+[View Example](examples/example-flourish.html){.btn .btn-primary}
+[Source Code](https://github.com/EmilHvitfeldt/quarto-roughnotation/blob/main/examples/example-flourish.qmd){.btn .btn-secondary}
 
-<iframe src="example-flourish.html" width="100%" height="500" style="border: 1px solid #ccc; border-radius: 4px;"></iframe>
+<iframe src="examples/example-flourish.html" width="100%" height="500" style="border: 1px solid #ccc; border-radius: 4px;"></iframe>
 
 ## Annotation Types
 

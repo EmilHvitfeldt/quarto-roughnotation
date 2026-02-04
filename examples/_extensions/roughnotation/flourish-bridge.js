@@ -22,15 +22,18 @@
  */
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Wait a bit for flourish to process the DOM first
-  setTimeout(initFlourishBridge, 100);
+  // Wait for flourish to process the DOM first.
+  // Use requestAnimationFrame + setTimeout for more reliable timing than a fixed delay.
+  requestAnimationFrame(() => {
+    setTimeout(initFlourishBridge, 0);
+  });
 });
 
 function initFlourishBridge() {
   // Find all flourish-created spans (classes starting with flr-)
   const flourishElements = document.querySelectorAll('[class*="flr-"]');
 
-  flourishElements.forEach((el, index) => {
+  flourishElements.forEach((el) => {
     const style = getComputedStyle(el);
 
     // Check if this element has roughnotation custom properties
@@ -53,8 +56,7 @@ function initFlourishBridge() {
       '--rn-multiline': 'rnMultiline',
       '--rn-iterations': 'rnIterations',
       '--rn-brackets': 'rnBrackets',
-      '--rn-rtl': 'rnRtl',
-      '--rn-index': 'rnIndex'
+      '--rn-rtl': 'rnRtl'
     };
 
     Object.entries(propertyMappings).forEach(([cssProperty, dataAttr]) => {
@@ -64,7 +66,7 @@ function initFlourishBridge() {
       }
     });
 
-    // Set fragment-index if --rn-index is specified, otherwise use order
+    // Set fragment-index if --rn-index is specified for ordering
     const rnIndex = style.getPropertyValue('--rn-index').trim();
     if (rnIndex) {
       el.dataset.fragmentIndex = rnIndex;
@@ -77,7 +79,4 @@ function initFlourishBridge() {
       el.style.backgroundColor = 'transparent';
     }
   });
-
-  // Dispatch a custom event to signal bridge is ready
-  document.dispatchEvent(new CustomEvent('flourish-bridge-ready'));
 }

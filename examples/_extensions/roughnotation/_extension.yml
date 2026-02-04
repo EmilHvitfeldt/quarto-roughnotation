@@ -1,0 +1,6 @@
+title: RoughNotations
+author: Emil Hvitfeldt
+version: 1.0.0
+contributes:
+  filters:
+    - rough.lua

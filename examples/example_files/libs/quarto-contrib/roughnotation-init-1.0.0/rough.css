@@ -1,0 +1,10 @@
+/* Keep text visible at all times - override default fragment hiding */
+.reveal .slides section .fragment.rn-fragment {
+  opacity: 1;
+  visibility: inherit;
+}
+
+/* Flourish bridge: ensure inline display for code annotations */
+.reveal .slides section .fragment.rn-fragment[class*="flr-"] {
+  display: inline;
+}

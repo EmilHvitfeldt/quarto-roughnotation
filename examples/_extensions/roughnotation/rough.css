@@ -4,9 +4,7 @@
   visibility: inherit;
 }
 
-/* Flourish bridge: ensure bridged elements are visible and styled correctly */
+/* Flourish bridge: ensure inline display for code annotations */
 .reveal .slides section .fragment.rn-fragment[class*="flr-"] {
-  opacity: 1;
-  visibility: inherit;
   display: inline;
 }
