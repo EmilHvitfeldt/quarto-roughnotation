@@ -36,7 +36,7 @@ Lastly, press the `R` key to activate the animation. For more examples and optio
 
 ## Example
 
-Here is the source code for many of the examples: [example.qmd](https://github.com/EmilHvitfeldt/quarto-roughnotation/blob/main/example.qmd)
+Here is the source code for many of the examples: [example.qmd](https://github.com/EmilHvitfeldt/quarto-roughnotation/blob/main/examples/example.qmd)
 
 This is the output of [example.qmd](https://Emilhvitfeldt.github.io/quarto-roughnotation/).
 
@@ -93,4 +93,4 @@ mean(x)
 | `--rn-brackets` | `left,right` | Bracket sides |
 | `--rn-index` | `1` | Fragment order |
 
-See [example-flourish.qmd](https://github.com/EmilHvitfeldt/quarto-roughnotation/blob/main/example-flourish.qmd) for more examples.
+See [example-flourish.qmd](https://github.com/EmilHvitfeldt/quarto-roughnotation/blob/main/examples/example-flourish.qmd) for more examples.
