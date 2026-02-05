@@ -26,19 +26,19 @@ filters:
 ---
 ```
 
-Then use the `.rn` to class to specify what elements should be highlighted.
+Then use the `.rn-fragment` class to specify what elements should be highlighted.
 
 ``` markdown
-[Highlight me!]{.rn}
+[Highlight me!]{.rn-fragment}
 ```
 
-Lastly, press the `R` key to activate the animation. For more examples and options look at the examples [here](https://Emilhvitfeldt.github.io/quarto-roughnotation/).
+Use arrow keys or spacebar to trigger annotations during your presentation. You can customize annotations with options like `rn-type` and `rn-color`:
 
-## Example
+``` markdown
+[underlined phrase]{.rn-fragment rn-type=underline rn-color=red}
+```
 
-Here is the source code for many of the examples: [example.qmd](https://github.com/EmilHvitfeldt/quarto-roughnotation/blob/main/examples/example.qmd)
-
-This is the output of [example.qmd](https://Emilhvitfeldt.github.io/quarto-roughnotation/).
+For full documentation and examples, visit the [documentation site](https://emilhvitfeldt.github.io/quarto-roughnotation/).
 
 ## Code Chunk Annotations (with Flourish)
 
