@@ -24,7 +24,7 @@ function Meta(m)
   })
   quarto.doc.addHtmlDependency({
     name = "roughnotation-init",
-    version = "1.0.0",
+    version = "2.0.0",
     scripts = {"rough.js"},
     stylesheets = {"rough.css"}
   })
