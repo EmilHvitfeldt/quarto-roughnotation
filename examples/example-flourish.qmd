@@ -81,6 +81,25 @@ mtcars |> filter(mpg > 20)
 
 ## Multiple targets
 
+````md
+```{{r}}
+#| echo: true
+#| flourish:
+#|   - target: "mean"
+#|     style: "--rn-type: circle; --rn-color: red; --rn-index: 1;"
+#|   - target: "quantile"
+#|     style: "--rn-type: underline; --rn-color: blue; --rn-index: 2;"
+#|   - target: "median"
+#|     style: "--rn-type: box; --rn-color: green; --rn-index: 3;"
+x <- c(1, 2, 3, 4, 5)
+mean(x)
+quantile(x)
+median(x)
+```
+````
+
+## Multiple targets
+
 ```{r}
 #| echo: true
 #| flourish:
@@ -95,6 +114,20 @@ mean(x)
 quantile(x)
 median(x)
 ```
+
+## Regex targeting
+
+Use flourish's `target-rx` for pattern matching:
+
+````md
+```{{r}}
+#| echo: true
+#| flourish:
+#|   - target-rx: "mpg|wt|hp"
+#|     style: "--rn-type: highlight; --rn-color: #e91e6380;"
+head(mtcars[, c("mpg", "wt", "hp")])
+```
+````
 
 ## Regex targeting
 
