@@ -1,5 +1,7 @@
 # quarto-roughnotation (development version)
 
+# 2.0.0
+
 ## New Features
 
 ### Flourish Integration

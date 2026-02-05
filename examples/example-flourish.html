@@ -10,8 +10,8 @@
 <script src="example-flourish_files/libs/quarto-contrib/flourish-0.0.1/injectFlourishes.js"></script>
 <script src="example-flourish_files/libs/quarto-contrib/flourish-0.0.1/flourish.js"></script>
 <script src="example-flourish_files/libs/quarto-contrib/roughnotation-0.5.1/rough-notation.iife.js"></script>
-<script src="example-flourish_files/libs/quarto-contrib/roughnotation-init-1.0.0/rough.js"></script>
-<link href="example-flourish_files/libs/quarto-contrib/roughnotation-init-1.0.0/rough.css" rel="stylesheet">
+<script src="example-flourish_files/libs/quarto-contrib/roughnotation-init-2.0.0/rough.js"></script>
+<link href="example-flourish_files/libs/quarto-contrib/roughnotation-init-2.0.0/rough.css" rel="stylesheet">
 <script src="example-flourish_files/libs/quarto-contrib/roughnotation-flourish-bridge-1.0.0/flourish-bridge.js"></script><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.25">
 
@@ -296,18 +296,35 @@ Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
 </section>
 <section id="multiple-targets" class="slide level2">
 <h2>Multiple targets</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource markdown md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href=""></a><span class="in">```{r}</span></span>
+<span id="cb12-2"><a href=""></a><span class="co">#| echo: true</span></span>
+<span id="cb12-3"><a href=""></a><span class="co">#| flourish:</span></span>
+<span id="cb12-4"><a href=""></a><span class="co">#|   - target: "mean"</span></span>
+<span id="cb12-5"><a href=""></a><span class="co">#|     style: "--rn-type: circle; --rn-color: red; --rn-index: 1;"</span></span>
+<span id="cb12-6"><a href=""></a><span class="co">#|   - target: "quantile"</span></span>
+<span id="cb12-7"><a href=""></a><span class="co">#|     style: "--rn-type: underline; --rn-color: blue; --rn-index: 2;"</span></span>
+<span id="cb12-8"><a href=""></a><span class="co">#|   - target: "median"</span></span>
+<span id="cb12-9"><a href=""></a><span class="co">#|     style: "--rn-type: box; --rn-color: green; --rn-index: 3;"</span></span>
+<span id="cb12-10"><a href=""></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb12-11"><a href=""></a><span class="fu">mean</span>(x)</span>
+<span id="cb12-12"><a href=""></a><span class="fu">quantile</span>(x)</span>
+<span id="cb12-13"><a href=""></a><span class="fu">median</span>(x)</span>
+<span id="cb12-14"><a href=""></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="multiple-targets-1" class="slide level2">
+<h2>Multiple targets</h2>
 <div class="cell" data-flourish="[{&quot;target&quot;:&quot;mean&quot;,&quot;style&quot;:&quot;--rn-type: circle; --rn-color: red; --rn-index: 1;&quot;},{&quot;target&quot;:&quot;quantile&quot;,&quot;style&quot;:&quot;--rn-type: underline; --rn-color: blue; --rn-index: 2;&quot;},{&quot;target&quot;:&quot;median&quot;,&quot;style&quot;:&quot;--rn-type: box; --rn-color: green; --rn-index: 3;&quot;}]">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb12-2"><a href=""></a><span class="fu">mean</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb13-2"><a href=""></a><span class="fu">mean</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="fu">quantile</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a><span class="fu">quantile</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  0%  25%  50%  75% 100% 
    1    2    3    4    5 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a><span class="fu">median</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a><span class="fu">median</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
@@ -316,8 +333,19 @@ Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
 <section id="regex-targeting" class="slide level2">
 <h2>Regex targeting</h2>
 <p>Use flourish’s <code>target-rx</code> for pattern matching:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource markdown md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb19-1"><a href=""></a><span class="in">```{r}</span></span>
+<span id="cb19-2"><a href=""></a><span class="co">#| echo: true</span></span>
+<span id="cb19-3"><a href=""></a><span class="co">#| flourish:</span></span>
+<span id="cb19-4"><a href=""></a><span class="co">#|   - target-rx: "mpg|wt|hp"</span></span>
+<span id="cb19-5"><a href=""></a><span class="co">#|     style: "--rn-type: highlight; --rn-color: #e91e6380;"</span></span>
+<span id="cb19-6"><a href=""></a><span class="fu">head</span>(mtcars[, <span class="fu">c</span>(<span class="st">"mpg"</span>, <span class="st">"wt"</span>, <span class="st">"hp"</span>)])</span>
+<span id="cb19-7"><a href=""></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="regex-targeting-1" class="slide level2">
+<h2>Regex targeting</h2>
+<p>Use flourish’s <code>target-rx</code> for pattern matching:</p>
 <div class="cell" data-flourish="[{&quot;target-rx&quot;:&quot;mpg|wt|hp&quot;,&quot;style&quot;:&quot;--rn-type: highlight; --rn-color: #e91e6380;&quot;}]">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a><span class="fu">head</span>(mtcars[, <span class="fu">c</span>(<span class="st">"mpg"</span>, <span class="st">"wt"</span>, <span class="st">"hp"</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="fu">head</span>(mtcars[, <span class="fu">c</span>(<span class="st">"mpg"</span>, <span class="st">"wt"</span>, <span class="st">"hp"</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                   mpg    wt  hp
 Mazda RX4         21.0 2.620 110
@@ -406,8 +434,8 @@ Valiant           18.1 3.460 105</code></pre>
 <p>You can mix code annotations with regular text annotations:</p>
 <p>This text has a <span class="rn-fragment fragment" data-rn-color="orange">highlighted word</span>.</p>
 <div class="cell" data-flourish="[{&quot;target&quot;:&quot;ggplot&quot;,&quot;style&quot;:&quot;--rn-type: box; --rn-color: steelblue;&quot;}]">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb20-2"><a href=""></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(wt, mpg)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb22-2"><a href=""></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(wt, mpg)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 
