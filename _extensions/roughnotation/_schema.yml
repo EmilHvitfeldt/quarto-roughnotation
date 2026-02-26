@@ -1,0 +1,61 @@
+$schema: https://m.canouil.dev/quarto-wizard/assets/schema/v1/extension-schema.json
+
+classes:
+  rn-fragment:
+    description: "Mark an element for animated annotation with RoughNotation, triggered as a RevealJS fragment."
+
+attributes:
+  rn-fragment:
+    rn-type:
+      type: string
+      enum:
+        - underline
+        - box
+        - circle
+        - highlight
+        - strike-through
+        - crossed-off
+        - bracket
+      default: highlight
+      description: "Type of annotation to draw."
+    rn-color:
+      type: string
+      default: "#fff17680"
+      description: "Colour of the annotation."
+      completion:
+        type: color
+    rn-animate:
+      type: boolean
+      default: true
+      description: "Whether to animate the annotation."
+    rn-animationduration:
+      type: number
+      default: 800
+      description: "Animation duration in milliseconds."
+    rn-strokewidth:
+      type: number
+      default: 1
+      description: "Width of the annotation stroke."
+    rn-padding:
+      type: number
+      default: 5
+      description: "Padding around the annotated element in pixels. Use comma-separated values for per-side padding."
+    rn-multiline:
+      type: boolean
+      default: true
+      description: "Whether to annotate across multiple lines."
+    rn-iterations:
+      type: number
+      default: 2
+      description: "Number of drawing passes for the annotation."
+    rn-brackets:
+      type: string
+      default: right
+      description: "Bracket sides when rn-type is 'bracket'. Use comma-separated values for multiple sides (e.g., 'left,right')."
+    rn-index:
+      type: number
+      description: "Fragment order index for R-key sequential triggering."
+    rn-rtl:
+      type: boolean
+      default: false
+      description: "Whether to draw the annotation right-to-left."

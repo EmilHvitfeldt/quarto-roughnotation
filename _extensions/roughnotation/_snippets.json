@@ -1,0 +1,16 @@
+{
+  "RoughNotation Annotation": {
+    "prefix": "rn",
+    "body": [
+      "[${1:text}]{.rn-fragment}"
+    ],
+    "description": "Insert a basic RoughNotation annotation."
+  },
+  "RoughNotation Typed Annotation": {
+    "prefix": "rn-typed",
+    "body": [
+      "[${1:text}]{.rn-fragment rn-type=${2|underline,box,circle,highlight,strike-through,crossed-off,bracket|} rn-color=${3:red}}"
+    ],
+    "description": "Insert a RoughNotation annotation with type and colour options."
+  }
+}
