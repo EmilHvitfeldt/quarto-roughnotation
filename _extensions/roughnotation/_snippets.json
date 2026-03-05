@@ -1,0 +1,18 @@
+{
+  "Roughnotation span": {
+    "prefix": "rn-span",
+    "body": [
+      "[${1:highlighted text}]{.rn-fragment rn-type=${2:underline} rn-color=${3:red}}"
+    ],
+    "description": "Insert an inline roughnotation fragment."
+  },
+  "Roughnotation div": {
+    "prefix": "rn-div",
+    "body": [
+      "::: {.rn-fragment rn-type=${1:box} rn-color=${2:orange}}",
+      "${3:Annotated block content}",
+      ":::"
+    ],
+    "description": "Insert a block roughnotation fragment."
+  }
+}

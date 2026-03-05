@@ -1,0 +1,52 @@
+$schema: https://m.canouil.dev/quarto-wizard/assets/schema/v1/extension-schema.json
+
+attributes:
+  rn-fragment:
+    rn-type:
+      type: string
+      enum:
+        - underline
+        - box
+        - circle
+        - highlight
+        - strike-through
+        - crossed-off
+        - bracket
+      description: Rough notation annotation style.
+    rn-color:
+      type: string
+      description: Annotation stroke or highlight colour.
+      completion:
+        type: color
+    rn-animate:
+      type: boolean
+      description: Animate drawing of the annotation.
+    rn-animationDuration:
+      type: integer
+      min: 0
+      description: Animation duration in milliseconds.
+    rn-strokeWidth:
+      type: number
+      min: 0
+      description: Annotation line thickness.
+    rn-padding:
+      type: number
+      min: 0
+      description: Padding around annotated content.
+    rn-multiline:
+      type: boolean
+      description: Allow annotation across multiple lines.
+    rn-iterations:
+      type: integer
+      min: 1
+      description: Number of rough drawing iterations.
+    rn-brackets:
+      type: string
+      description: Bracket sides when rn-type is bracket (for example left,right).
+    rn-rtl:
+      type: boolean
+      description: Draw annotations right-to-left.
+
+classes:
+  rn-fragment:
+    description: Reveal.js fragment annotated by roughnotation.
