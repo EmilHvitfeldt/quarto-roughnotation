@@ -2,6 +2,8 @@
 
 An extension that uses the [roughnotation](https://roughnotation.com/) javascript library to add animated annotations to revealjs documents.
 
+![](roughnotation.webp)
+
 ## Installation
 
 To install this extension in your current directory (or into the Quarto project that you're currently working in), use the following command:
