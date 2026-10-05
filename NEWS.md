@@ -1,5 +1,15 @@
 # quarto-roughnotation (development version)
 
+# 2.2.0
+
+## Bug Fixes
+
+* Fixed a visual snap when a fragment's annotation is hidden (navigated backward)
+  while it is still mid-draw. The vendored `rough-notation.iife.js` now reads the
+  annotation's live stroke progress before reversing it, instead of forcing it to
+  fully-drawn first, so the undraw animation continues smoothly from wherever the
+  draw-in actually was.
+
 # 2.0.0
 
 ## New Features
